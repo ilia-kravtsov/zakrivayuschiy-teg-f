@@ -1,20 +1,429 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
 .page {
+  display: grid;
+  justify-items: center;
+  gap: 50px;
+  padding-block: 100px;
+  color: var(--accent-color, #000);
+  font-family: var(--primary-font, 'Inter-Variable', 'Helvetica', Arial, sans-serif);
+  background-color: var(--background-color, #fff);
+  background-image:
+    repeating-linear-gradient(to right, var(--background-image-lines, #d3d3d3) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, var(--background-image-lines, #d3d3d3) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, var(--background-image, #e7e7e7, #1a1a1a));
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: 'wght' var(--text-font-weight, 400);
 }
+
+.container-size {
+  inline-size: var(--content-width, clamp(375px, 100%, 700px));
+}
+
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--border, 2px solid var(--accent-color, #000));
+  padding: 0;
+  box-shadow: none;
+  overflow: hidden;
+  background-color: transparent;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color, #000);
+  outline: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color, #000);
+  transition: transform 0.5s ease-in-out;
+  transform: scale(0,1);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.button:hover::before {
+  transform: scale(1.1);
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  padding-bottom: 50px;
+}
+
+.header__container {
+  display: grid;
+  justify-items: center;
+  gap: 25px;
+  border: var(--border, 2px solid var(--accent-color, #000));
+  padding-block-start: clamp(120px, 9.45vw, 136px);
+  padding-block-end: 20px;
+  font-family: var(--secondary-font, "Press Start 2P", sans-serif);
+  text-transform: uppercase;
+  background-color: var(--background-color, #fff);
+  inline-size: var(--content-width, clamp(375px, 50vw, 700px));
+}
+
+.header__logo-container {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+}
+
+.header__logo {
+  outline: none;
+  color: var(--accent-color, #000);
+  font-size: var(--logo-font-size, clamp(49px, 3.611rem, 6vw));
+  text-decoration: none;
+}
+
+.header__title {
+  font-size: var(--title-font-size, clamp(14px, 1.278rem, 2.1vw));
+}
+
+.header__title:focus {
+  outline: none;
+}
+
+.theme-menu__list {
+  display: grid;
+  gap: 10px;
+  padding-inline-start: 20px;
+  font-size: var(--font-size-small, 0.77778rem);
+}
+
+.theme-menu__button {
+  position: relative;
+  border: none;
+  opacity: 1;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-menu__button:hover,
+.theme-menu__button:focus,
+.theme-menu__button:focus-visible,
+.theme-menu__button:disabled {
+  opacity: 0.6;
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  height: 2px;
+  opacity: 0.6;
+  background-color: var(--accent-color, #000);
+  transition: transform 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  animation: pointer 0.5s ease-in-out infinite alternate;
+}
+
+.main {
+  display: grid;
+  justify-items: center;
+  row-gap: 47px;
+  inline-size: var(--content-width, clamp(375px, 50vw, 700px));
+}
+
+.card {
+  display: grid;
+  border: var(--border, 2px solid var(--accent-color));
+  background-color: var(--background-color, #fff);
+}
+
+.card__title {
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-variation-settings: 'wght' var(--title-font-weight, 700);
+}
+
+.card__image-container {
+  position: relative;
+  border-block: var(--border, 2px solid var(--accent-color, #000));
+}
+
+.card__label {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.5;
+  color: var(--accent-color, #000);
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  font-weight: var(--title-font-weight, 700);
+  font-size: var(--font-size-small, 0.77778rem);
+  text-shadow:
+    -1px 0 var(--background-color, #fff),
+    0 1px var(--background-color, #fff),
+    1px 0 var(--background-color, #fff),
+    0 -1px var(--background-color, #fff);
+  inset-block-start: 23px;
+  inset-inline-end: max(13px, 4%);
+  mix-blend-mode: hard-light;
+}
+
+@supports (text-stroke: 1px var(--background-color, #fff)) or (-webkit-text-stroke: 1px var(--background-color, #fff)) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--background-color, #fff);
+    text-stroke: 1px var(--background-color, #fff);
+  }
+}
+
+.card__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+}
+
+.filter-saturate-small {
+  filter: saturate(0.2);
+}
+
+.filter-saturate-large {
+  filter: saturate(3.5);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(30deg);
+}
+
+.filter-invert {
+  filter: invert(0.8);
+}
+
+.filter-sepia {
+  filter: sepia(0.9);
+}
+
+.filter-blur {
+  filter: blur(10px);
+}
+
+.filter-hue-blur-opacity  {
+  filter: hue-rotate(90deg) blur(2px) opacity(0.7) brightness(0.6);
+}
+
+.card__description-container {
+  display: grid;
+  gap: 27px;
+  padding: 25px;
+  font-size: 1rem;
+  line-height: 117%;
+}
+
+.card__button-container {
+  display: flex;
+  justify-self: end;
+  gap: 8px;
+}
+
+.card__icon-button {
+  border: 2px solid transparent;
+  padding: 0;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color, #000);
+}
+
+.like-icon {
+  display: block;
+  transition: fill 0.1s linear;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s linear;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon:hover .main-body, 
+.like-icon:hover .core {
+  fill: var(--accent-color, #000);
+}
+
+.like-icon:hover .main-body {
+  transition: fill 0.3s 0.05s linear; 
+}
+
+.like-icon:hover .core {
+  transition: fill 0.3s linear; 
+}
+
+.like-icon:active .main-body,
+.like-icon:active .core,
+.like-icon.is-liked .main-body,
+.like-icon.is-liked .core,
+.like-icon.is-liked .contour {
+  fill: var(--fill-color-heart);
+}
+
+.like-icon:active .main-body,
+.like-icon.is-liked .main-body {
+  transition: fill 0.3s 0.05s linear; 
+}
+
+.like-icon:active .core,
+.like-icon.is-liked .core {
+  transition: fill 0.3s linear; 
+}
+
+.like-icon.is-liked .contour {
+  transition: fill 0.3s 0.06s linear; 
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-moving 0.3s 0.1s ease-in alternate;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-appearing 0.3s 0.3s ease-in alternate;
+}
+
+.card__like-button {
+  padding: 10px 0;
+  inline-size: 130px;
+}
+
+.button__text {
+  color: var(--mix-color, #fff);
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  font-size: var(--font-size-small, 0.77778rem);
+  line-height: 0.7rem;
+  mix-blend-mode: difference;
+}
+
+.save-button {
+  display: flex;
+  gap: 8px;
+  padding: 15px 21px 15px 19px;
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  font-size: var(--font-size-small, 0.77778rem);
+  line-height: 70%;
+  background-color: var(--background-color, #fff);
+}
+
+.save-button__icon {
+  color: var(--mix-color);
+  inline-size: 21px;
+  mix-blend-mode: difference;
+}
+
+.dialog[open] {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 30px 20px;
+  border: var(--border, 2px solid var(--accent-color, #000));
+  padding: 30.5px;
+  overflow: hidden;
+  color: var(--accent-color, #000);
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  line-height: 150%;
+  text-transform: uppercase;
+  background-color: var(--background-color, #fff);
+  inline-size: 357px;
+  block-size: 193px;
+}
+
+dialog::backdrop {
+  background-color: var(--backdrop-color, #000000bf);
+}
+
+.dialog__icon {
+  color: var(--accent-color, #000);
+  inline-size: 39px;
+}
+
+.dialog__title {
+  color: var(--accent-color, #000);
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  font-size: 0.875rem;
+  line-height: 150%;
+}
+
+.button-form {
+  grid-column-start: span 2;
+}
+
+.button-form__button {
+  inline-size: 293px;
+  block-size: 38px;
+}
+
+.button-form__text {
+  font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
+  font-size: var(--font-size-small, 0.77778rem);
+  line-height: 90%;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .save-button {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .save-button__icon {
+    inline-size: 28px;
+  }
+
+  .dialog[open] {
+    padding: 32px 42px;
+    inline-size: 341px;
+    block-size: 195px;
+  }
+}
+
