@@ -7,7 +7,7 @@ https://github.com/ilia-kravtsov/zakrivayuschiy-teg-f.git
 
 ## Screenshots and pixel perfect results are here
 
-[pixel perfect](https://disk.yandex.ru/d/QEOYlgBoq09qug)
+[pixel perfect link](https://disk.yandex.ru/d/QEOYlgBoq09qug)
 
 ### Контакт для связи
 
