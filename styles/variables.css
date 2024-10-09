@@ -11,7 +11,7 @@
   --background-color: #fff;
   --background-image-lines: #d3d3d3;
   --background-image: #e7e7e7, #1a1a1a;
-  --content-width: clamp(375px, 48vw, 700px);
+  --content-width: clamp(375px, 50vw, 700px);
   --border: 2px solid var(--accent-color);
   --mix-color: var(--background-color);
   --fill-color-heart: #FF0000;

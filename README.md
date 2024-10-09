@@ -5,12 +5,9 @@ https://github.com/ilia-kravtsov/zakrivayuschiy-teg-f.git
 
 Проект посвященный рефлексии по пройденному материалу.
 
-## Screenshots for pixel perfect
+## Screenshots and pixel perfect results are here
 
-![light](./pixel_perfect/Light.png);
-![light-mobile](./pixel_perfect/Light_Mobile.png);
-![dark](./pixel_perfect/Dark.png);
-![dark-mobile](./pixel_perfect/Dark_Mobile.png);
+[pixel perfect](https://disk.yandex.ru/d/QEOYlgBoq09qug)
 
 ### Контакт для связи
 

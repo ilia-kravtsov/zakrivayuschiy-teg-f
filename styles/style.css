@@ -1,7 +1,6 @@
 .page {
   display: grid;
   justify-items: center;
-  gap: 50px;
   padding-block: 100px;
   color: var(--accent-color, #000);
   font-family: var(--primary-font, 'Inter-Variable', 'Helvetica', Arial, sans-serif);
@@ -18,7 +17,7 @@
 }
 
 .container-size {
-  inline-size: var(--content-width, clamp(375px, 100%, 700px));
+  inline-size: var(--content-width, clamp(375px, 50vw, 700px));
 }
 
 .button {
@@ -62,7 +61,7 @@
 .header {
   display: grid;
   justify-items: center;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 .header__container {
@@ -155,7 +154,7 @@
 .main {
   display: grid;
   justify-items: center;
-  row-gap: 47px;
+  row-gap: 50px;
   inline-size: var(--content-width, clamp(375px, 50vw, 700px));
 }
 
@@ -239,16 +238,20 @@
 
 .card__description-container {
   display: grid;
-  gap: 27px;
+  gap: 25px;
   padding: 25px;
   font-size: 1rem;
   line-height: 117%;
 }
 
+.card__text--margin-top {
+  margin-block-start: 2px;
+}
+
 .card__button-container {
   display: flex;
   justify-self: end;
-  gap: 8px;
+  gap: 7px;
 }
 
 .card__icon-button {
@@ -332,6 +335,7 @@
 .card__like-button {
   padding: 10px 0;
   inline-size: 130px;
+  block-size: 38px;
 }
 
 .button__text {
@@ -367,15 +371,13 @@
   align-items: center;
   gap: 30px 20px;
   border: var(--border, 2px solid var(--accent-color, #000));
-  padding: 30.5px;
-  overflow: hidden;
+  padding: 30.5px; 
   color: var(--accent-color, #000);
   font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
   line-height: 150%;
   text-transform: uppercase;
   background-color: var(--background-color, #fff);
   inline-size: 357px;
-  block-size: 193px;
 }
 
 dialog::backdrop {
@@ -390,7 +392,7 @@ dialog::backdrop {
 .dialog__title {
   color: var(--accent-color, #000);
   font-family: var(--secondary-font, 'Press Start 2P', 'Helvetica', Arial, sans-serif);
-  font-size: 0.875rem;
+  font-size: 0.78rem;
   line-height: 150%;
 }
 
@@ -420,10 +422,17 @@ dialog::backdrop {
     inline-size: 28px;
   }
 
+  .button-form__button {
+    inline-size: 257px;
+  }
+
   .dialog[open] {
-    padding: 32px 42px;
+    padding: 30px 36px;
     inline-size: 341px;
-    block-size: 195px;
+  }
+
+  .card--margin-top {
+    margin-block-start: -2px;
   }
 }
 
